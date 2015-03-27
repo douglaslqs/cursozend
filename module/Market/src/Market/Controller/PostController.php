@@ -16,7 +16,7 @@ class PostController extends AbstractActionController
 
 	public function indexAction()
 	{
-		$categories = $this->getServiceLocator()->get('categories';)
-		return ViewModel(array('categories' => $categories));
+		
+		return new ViewModel(array('categories' => $this->categories));
 	}
 }
