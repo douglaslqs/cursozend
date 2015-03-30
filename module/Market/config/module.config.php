@@ -29,7 +29,7 @@ return array(
             'market' => array(
                 'type' => 'Segment', 
                 'options' => array(
-                    'route' => '/market[/:action][/]', 
+                    'route' => '/market[/]', 
                     'defaults' => array( 
                         'controller' => 'market-index-controller', 
                         'action' => 'index', 
