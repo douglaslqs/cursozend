@@ -14,6 +14,7 @@ class ViewController extends AbstractActionController {
     
     public function itemAction(){
         
+        
         $itemId = $this->params()->fromQuery('itemId');
         
         if (!$itemId){
