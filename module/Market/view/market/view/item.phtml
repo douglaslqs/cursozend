@@ -1,2 +1,8 @@
 <h1>Items:</h1>
-<?php echo $this->itemId; ?>
+<?php 
+	if ($this->itemId) {
+		echo $this->itemId; 	
+	} else {
+		echo "item não encontrado";
+	}
+?>

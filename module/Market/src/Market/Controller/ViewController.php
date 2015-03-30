@@ -14,7 +14,7 @@ class ViewController extends AbstractActionController {
     
     public function itemAction() {
         
-        $itemId = $this->params()->fromRoute('itemId');
+        $itemId = $this->params()->fromRoute('itemId');        
         
         if (!$itemId){
             $this->flashMessenger()->addMessage('Item Not Found');
