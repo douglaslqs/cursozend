@@ -48,7 +48,7 @@
                 <h3>Categories</h3>             
                 <?php 
                     if($this->categories) {
-                       echo $this->htmlList($this->categories);
+                       echo $this->leftLinks($this->categories, $this->basepath().'/market/view/main');
                     }
                 ?>
             </div>
