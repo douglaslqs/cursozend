@@ -40,7 +40,7 @@ return array(
                     'view' => array(
                         'type' => 'Segment', 
                         'options' => array(
-                            'route' => '[/]view[/]', 
+                            'route' => 'view[/]', 
                             'defaults' => array(
                                 'controller' => 'market-view-controller', 
                                 'action' => 'index', 
@@ -51,7 +51,7 @@ return array(
                             'main' => array(
                                 'type' => 'Segment', 
                                 'options' => array( 
-                                    'route' => '[/]main[/:category][/]',
+                                    'route' => 'main[/:category][/]',
                                     'defaults' => array(
                                         'action' => 'index',
                                     ),
