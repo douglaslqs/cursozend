@@ -60,7 +60,7 @@ return array(
                             'item' => array(
                                 'type' => 'Segment',
                                 'options' => array(
-                                    'route' => '[/]item[/:itemId][/]',
+                                    'route' => 'item[/:itemId][/]',
                                     'defaults' => array(
                                         'action' => 'item', 
                                     ),
@@ -74,7 +74,7 @@ return array(
                     'post' => array(
                         'type' => 'Segment', 
                         'options' => array(
-                            'route' => '[/]post[/]',
+                            'route' => 'post[/]',
                             'defaults' => array( 
                                 'controller' => 'market-post-controller',
                                 'action' => 'index'
