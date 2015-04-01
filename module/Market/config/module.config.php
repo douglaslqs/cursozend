@@ -6,7 +6,7 @@ return array(
             'market-view-controller' => 'Market\Controller\ViewController'
         ),
         'factories' => array(
-            'market-post-controller' => 'Market\Factory\PostControllerFactory', 
+            'market-post-controller' => 'Market\Factory\PostControllerFactory',             
         ),
         'aliases' => array(
             'index' => 'market-index-controller', 
@@ -85,7 +85,13 @@ return array(
             ),              
         ), 
     ),    
- 
+    
+    'service_manager' => array(
+        'factories' => array(
+            'market-post-form' => 'Market\Factory\PostFormFactory'
+        )
+    ),
+
     'view_manager' => array(
         'template_path_stack' => array(
             __DIR__ . '/../view',

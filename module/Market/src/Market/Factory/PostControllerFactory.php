@@ -7,14 +7,14 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 class PostControllerFactory implements FactoryInterface
 {
-	public function createService(ServiceLocatorInterface $controllerManager)
+	public function createService(ServiceLocatorInterface $serviceLocator)
 	{
-		$allServices = $controllerManager->getServiceLocator();
-		$sm = $allServices->get('ServiceManager');
+		$sm = $serviceLocator->getServiceLocator();
+		$categories = $sm->get('categories');		
 
-		$categories = $sm->get('categories');
 		$postController = new \Market\Controller\PostController();
 		$postController->setCategories($categories);
+		$postController->setPostForm($sm->get('market-post-form'));
 
 		return $postController;
 	}
