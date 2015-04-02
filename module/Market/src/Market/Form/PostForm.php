@@ -24,7 +24,7 @@ class PostForm extends Form
 
 	public function buildForm()
 	{
-		$this->setAttribute('method' => 'post');
+		$this->setAttribute('method', 'post');
 
 
 		$category = new Select('category');
