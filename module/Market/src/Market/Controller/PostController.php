@@ -8,6 +8,12 @@ class PostController extends AbstractActionController
 {
 
 	public $category;
+	public $postForm;
+
+	public function setPostForm($postForm)
+	{
+		$this->postForm = $postForm;
+	}
 
 	public function setCategories($categories)
 	{
@@ -16,8 +22,25 @@ class PostController extends AbstractActionController
 
 	public function indexAction()
 	{
-		$viewModel = new ViewModel(array('categories' => $this->categories));
-		$viewModel->setTemplate('market/post/invalid');
+		$data = $this->params()->fromPost();
+		//$this->postForm->setData($data);
+		
+		$viewModel = new ViewModel(array('postForm' => $this->postForm, 'data' => $data));
+		$viewModel->setTemplate('market/post/index');
+
+		if ($this->getRequest()->isPost()) {
+			$this->postForm->setData($data);
+			if ($this->postForm->isValid()) {
+				$this->flashMessenger()->addMessage("Thanks for posting!");
+				$this->redirect()->toRoute('home');
+			} else {
+				$invalidView = new ViewModel();
+				$invalidView->setTemplate('market/post/invalid');
+				$invalidView->addChild($viewModel, 'main');
+				return $invalidView;
+			}
+		}
+
 		return $viewModel;
 	}
 }

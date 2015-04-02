@@ -10,8 +10,8 @@ class IndexController extends AbstractActionController
 	public function indexAction()
 	{
 		$messages = array();
-		if ($this->flashMessenger()->hasMessages()) {
-			$messages = $this->flashmessenger->getMessages();
+		if ($this->flashmessenger()->hasMessages()) {
+			$messages = $this->flashmessenger()->getMessages();
 		}
 
 		return array('messages' => $messages);		
