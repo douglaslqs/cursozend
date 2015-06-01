@@ -30,21 +30,22 @@ class ListingsTable extends TableGateway {
 
     public function addPosting($data)
     {
+    	//var_dump($data);exit;
     	list($city, $country) = explode(",", $data['cityCode']);
     	$data['city'] = trim($city);
     	$data['country'] = trim($country);
 
-    	$data = new \DateTime();
+    	$date = new \DateTime();
 
     	if ($data['expires']) {
-    		if ($data['expíres'] == 30) {
-    			$data->add('P1M');
+    		if ($data['expires'] == 30) {
+    			$date->add('P1M');
     		} else {
-    			$data->add(new \DateInterval('P'.$data['expires'].'D'));
+    			$date->add(new \DateInterval('P'.$data['expires'].'D'));
     		}
     	}
 
-    	$data['date_expires'] = $date->format('Y-m-d H:i:s');
+    	$data['date_expire'] = $date->format('Y-m-d H:i:s');
     	unset($data['cityCode'], $data['expires'], $data['captcha'], $data['submit']);
 
     	$this->insert($data);
