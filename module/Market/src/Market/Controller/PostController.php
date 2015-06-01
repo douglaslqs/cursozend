@@ -9,7 +9,8 @@ class PostController extends AbstractActionController
 
 	public $category;
 	public $postForm;
-
+	use ListingsTableTrait;
+	
 	public function setPostForm($postForm)
 	{
 		$this->postForm = $postForm;
@@ -22,8 +23,7 @@ class PostController extends AbstractActionController
 
 	public function indexAction()
 	{
-		$data = $this->params()->fromPost();
-		//$this->postForm->setData($data);
+		$data = $this->params()->fromPost();		
 		
 		$viewModel = new ViewModel(array('postForm' => $this->postForm, 'data' => $data));
 		$viewModel->setTemplate('market/post/index');
@@ -31,6 +31,7 @@ class PostController extends AbstractActionController
 		if ($this->getRequest()->isPost()) {
 			$this->postForm->setData($data);
 			if ($this->postForm->isValid()) {
+				$this->listingsTable->addPosting($this->postForm->getValue());
 				$this->flashMessenger()->addMessage("Thanks for posting!");
 				$this->redirect()->toRoute('home');
 			} else {
