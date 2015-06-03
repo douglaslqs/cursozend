@@ -29,8 +29,7 @@ class ListingsTable extends TableGateway {
     }
 
     public function addPosting($data)
-    {
-    	//var_dump($data);exit;
+    {    	
     	list($city, $country) = explode(",", $data['cityCode']);
     	$data['city'] = trim($city);
     	$data['country'] = trim($country);
@@ -45,7 +44,7 @@ class ListingsTable extends TableGateway {
     		}
     	}
 
-    	$data['date_expire'] = $date->format('Y-m-d H:i:s');
+    	$data['date_expires'] = $date->format('Y-m-d H:i:s');
     	unset($data['cityCode'], $data['expires'], $data['captcha'], $data['submit']);
 
     	$this->insert($data);
